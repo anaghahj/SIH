@@ -10,22 +10,23 @@ class Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     void _cretaesytsem() {
       showModalBottomSheet(
-          //isScrollControlled: true,
+          isScrollControlled: true,
           useSafeArea: true,
           context: context,
           builder: (ctx) {
             return const create();
           });
     }
+
     void _removesystem() {
-  Navigator.of(context).push(
-    MaterialPageRoute(
-      builder: (_) {
-        return Remove();
-      },
-    ),
-  );
-}
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) {
+            return Remove();
+          },
+        ),
+      );
+    }
 
     return Scaffold(
       body: Padding(

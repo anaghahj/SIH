@@ -1,9 +1,11 @@
 import 'package:pulley_app/modals/constant.dart';
 import 'package:pulley_app/modals/local_store.dart';
+import 'package:pulley_app/modals/remote_store.dart';
 import 'package:pulley_app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 late ObjectBox objectbox;
+late RemoteStore remoteStore;
 
 ThemeData ttheme = ThemeData.light().copyWith(
     useMaterial3: true,
@@ -27,6 +29,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   objectbox = await ObjectBox.create();
+  remoteStore = RemoteStore.create();
   runApp(const MyApp());
 }
 

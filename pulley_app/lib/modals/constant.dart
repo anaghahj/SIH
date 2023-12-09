@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pulley_app/main.dart';
+import 'package:pulley_app/modals/logged_in_user.dart';
+import 'package:pulley_app/objectbox.g.dart';
 
 const ColorScheme kLightColorScheme = ColorScheme(
   brightness: Brightness.light,
@@ -67,3 +70,7 @@ const ColorScheme kDarkColorScheme = ColorScheme(
   inversePrimary: Color(0xff775b0e),
   surfaceTint:Color(0xff448aff),
 );
+
+final Box<Users> userbox=objectbox.store.box<Users>();
+
+Users? last_user;
