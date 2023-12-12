@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:pulley_app/modals/constant.dart';
 import 'package:pulley_app/modals/local_store.dart';
 import 'package:pulley_app/modals/remote_store.dart';
@@ -30,7 +32,8 @@ Future<void> main() async {
 
   objectbox = await ObjectBox.create();
   remoteStore = RemoteStore.create();
-  runApp(const MyApp());
+  Timer(const Duration(seconds: 15), () {runApp(const MyApp()); });
+  
 }
 
 class MyApp extends StatelessWidget {

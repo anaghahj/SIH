@@ -1,24 +1,35 @@
+import 'package:pulley_app/main.dart';
+import 'package:pulley_app/screens/choose_screen.dart';
 import 'package:pulley_app/screens/remove_screen.dart';
 import 'package:pulley_app/widgets/create.dart';
 
 import 'package:flutter/material.dart';
 
-class Screen extends StatelessWidget {
+class Screen extends StatefulWidget {
   const Screen({super.key});
-
+  
   @override
-  Widget build(BuildContext context) {
-    void _cretaesytsem() {
+  State<StatefulWidget> createState() {
+    return _Screen();
+  }
+}
+
+class _Screen extends State<Screen>{
+
+
+  void _cretaesytsem() {
       showModalBottomSheet(
           isScrollControlled: true,
           useSafeArea: true,
+          //showDragHandle: true,
           context: context,
           builder: (ctx) {
-            return const create();
+            return create();
           });
+        
     }
 
-    void _removesystem() {
+  void _removesystem() {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) {
@@ -28,6 +39,23 @@ class Screen extends StatelessWidget {
       );
     }
 
+  void _choosesystem() {
+      final list=remoteStore.conveyors;
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) {
+            return Choose(list);
+          },
+        ),
+      );
+    }
+
+  @override
+  Widget build(BuildContext context) {
+    
+    remoteStore.getConveyors();
+    
+
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(16),
@@ -35,7 +63,7 @@ class Screen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: _cretaesytsem,
+              onTap: _choosesystem,
               child: Container(
                 height: 200,
                 width: double.infinity,
@@ -43,7 +71,7 @@ class Screen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey,
                 ),
-                child: Column(
+                child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -57,7 +85,7 @@ class Screen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             GestureDetector(
               onTap: _cretaesytsem,
               child: Container(
@@ -67,7 +95,7 @@ class Screen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey,
                 ),
-                child: Column(
+                child:const Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -81,7 +109,7 @@ class Screen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             GestureDetector(
               onTap: _removesystem,
               child: Container(
@@ -91,7 +119,7 @@ class Screen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey,
                 ),
-                child: Column(
+                child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

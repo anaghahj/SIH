@@ -19,6 +19,7 @@ class _Login extends State<Login> {
   TextEditingController password = TextEditingController();
   bool isError = false;
   String errorString = '';
+  bool obscureText= true;
 
   Future<void> login() async {
     print('kaha');
@@ -29,13 +30,12 @@ class _Login extends State<Login> {
       return;
     }
     if (password.text.isEmpty) {
-      
       setState(() {
         errorString = 'Enter password';
       });
       return;
     }
-    
+
     int check = await remoteStore.isValidUser(username.text, password.text);
     switch (check) {
       case -1:
@@ -46,15 +46,15 @@ class _Login extends State<Login> {
         setState(() {
           errorString = 'Incorrect Password';
         });
-      case 1:
-        last_user = Users(username.text, password.text);
+      case _:
+        last_user = Users(check ,username.text, password.text);
         userbox.removeAll();
         userbox.put(last_user!);
         remoteStore
-            .setUsersCollection(last_user!.username + last_user!.id.toString());
+            .setUsersCollection(last_user!.username + last_user!.userId.toString());
         // ignore: use_build_context_synchronously
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=> const Mainscreen()));
-        
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (_) => const Mainscreen()));
     }
   }
 
@@ -95,12 +95,21 @@ class _Login extends State<Login> {
             child: TextField(
               controller: password,
               keyboardType: TextInputType.text,
-              obscureText: true,
-              decoration: const InputDecoration(
+              obscureText: obscureText,
+              decoration: InputDecoration(
                 labelText: 'Password',
                 hintText: 'Enter your password',
-                prefixIcon: Icon(Icons.password),
-                border: OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.password),
+                suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        obscureText = !obscureText;
+                      });
+                    },
+                    icon: obscureText
+                        ? const Icon(Icons.remove_red_eye)
+                        : const Icon(Icons.visibility_off_outlined)),
+                border: const OutlineInputBorder(),
               ),
             ),
           ),
@@ -112,12 +121,14 @@ class _Login extends State<Login> {
           const SizedBox(height: 5),
           ElevatedButton(onPressed: login, child: const Text('Log-in')),
           const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             const Text('If not registered.'),
             InkWell(
-              child: const Text('Register Now',style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline),),
+              child: const Text(
+                'Register Now',
+                style: TextStyle(
+                    color: Colors.blue, decoration: TextDecoration.underline),
+              ),
               onTap: () =>
                   launchUrlString('https://mines.gov.in/webportal/home'),
             ),

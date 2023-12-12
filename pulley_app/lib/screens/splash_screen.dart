@@ -28,7 +28,7 @@ class _SplashScreen extends State<SplashScreen> {
             return const Login();
           }
           remoteStore.setUsersCollection(
-              last_user!.username + last_user!.id.toString());
+              last_user!.username + last_user!.userId.toString());
           return const Mainscreen();
         }),
       ),
