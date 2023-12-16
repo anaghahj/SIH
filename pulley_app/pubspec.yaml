@@ -39,6 +39,10 @@ dependencies:
   objectbox_flutter_libs: any
   mongo_dart: ^0.9.3
   url_launcher: ^6.2.1
+  connectivity_plus: ^5.0.2
+  flutter_local_notifications: ^16.2.0
+  flutter_timezone: ^1.0.8
+  pull_to_refresh: ^2.0.0
 
 dev_dependencies:
   flutter_test:

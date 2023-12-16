@@ -1,57 +1,81 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:pulley_app/main.dart';
 import 'package:pulley_app/screens/selected_screen.dart';
 
 // ignore: must_be_immutable
-class Choose extends StatefulWidget{
-  const Choose(this.list,{super.key});
-  
-  final List<(String,Object)> list;
+class Choose extends StatefulWidget {
+  Choose(this.list, {super.key});
+
+  List<(String, Object)> list;
 
   @override
   State<Choose> createState() {
     return _Choose();
-  
+  }
 }
-}
+
 class _Choose extends State<Choose> {
   //List<String> items = ["hello", "hi", "everyone"];
-  
+  final RefreshController _refreshcontroller =
+      RefreshController(initialRefresh: false);
+  void onRefresh() async {
+    await Future.delayed(Duration(seconds: 3));
+    setState(() {
+      widget.list = remoteStore.conveyors;
+    });
+    _refreshcontroller.refreshCompleted();
+  }
+
+  void onLoading() async {
+    await Future.delayed(Duration(seconds: 3));
+    _refreshcontroller.loadComplete();
+  }
+
   void _choosen(Object conveyorId) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (_) {
-            return const Selected();
-          },
-        ),
-      );
-    }
+    remoteStore.setPulleyStatus(conveyorId);
+    Timer(const Duration(seconds: 10), () {
+      remoteStore.SetPulleysCondition();
+    });
+    Timer(const Duration(seconds: 5), () {
+      Navigator.of(context)
+          .pushReplacement(
+              MaterialPageRoute(builder: (ctx) => const Selected()))
+          .then((value) => setState(() {}));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    
-    
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Choose System"),
-        // actions: [
-        //   IconButton(onPressed: (){
-        //     setState(){}
-        //   }, icon: const Icon(Icons.replay_outlined))
-        // ],
       ),
-      body: ListView.builder(
-          itemCount: widget.list.length,
-          //itemCount: items.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(widget.list[index].$1),
-              trailing: TextButton(
-                child: Text("Choose"),
-                onPressed:(){_choosen(widget.list[index].$2);} ,
-              ),
-            );
-          }),
+      body: SmartRefresher(
+        controller: _refreshcontroller,
+        onLoading: onLoading,
+        onRefresh: onRefresh,
+        enablePullDown: true,
+        enablePullUp: true,
+        header: WaterDropHeader(),
+        child: ListView.builder(
+            itemCount: widget.list.length,
+            //itemCount: items.length,
+            itemBuilder: (context, index) {
+              return Card();
+              // ListTile(
+              //   title: Text(widget.list[index].$1),
+              //   trailing: TextButton(
+              //     child: Text("Choose"),
+              //     onPressed: () {
+              //       _choosen(widget.list[index].$2);
+              //     },
+              //   ),
+              // );
+            }),
+      ),
     );
   }
 }

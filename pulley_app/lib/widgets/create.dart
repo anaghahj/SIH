@@ -7,7 +7,6 @@ String errorstring = '';
 class create extends StatefulWidget {
   const create({super.key});
 
-
   @override
   State<create> createState() => _createState();
 }
@@ -30,7 +29,7 @@ class _createState extends State<create> {
       });
       return;
     }
-    if (pullryno.text.isEmpty) {
+    if (pullryno.text.isEmpty || int.tryParse(pullryno.text)! >= 10) {
       setState(() {
         errorstring = "Enter the Total number of pulleys";
       });
@@ -92,10 +91,9 @@ class _createState extends State<create> {
           beltWidth: width1,
           mine: mine1,
           industry: industry1);
-          
     }
-     remoteStore.getConveyors();
-      return;
+    remoteStore.setConveyors();
+    return;
   }
 
   @override
@@ -111,13 +109,11 @@ class _createState extends State<create> {
   }
 
   void service() {
-      showDialog(context: context, builder: (ctx) => const Service());
+    showDialog(context: context, builder: (ctx) => const Service());
   }
 
   @override
   Widget build(BuildContext context) {
-
-  
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
       child: ListView(
