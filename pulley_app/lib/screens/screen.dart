@@ -15,7 +15,7 @@ class Screen extends StatefulWidget {
 }
 
 class _Screen extends State<Screen> {
-  void _cretaesytsem() {
+  void _createsytsem() {
     showModalBottomSheet(
         isScrollControlled: true,
         useSafeArea: true,
@@ -69,85 +69,181 @@ class _Screen extends State<Screen> {
     //feedbackeer();
     // print("refresh");
     return Scaffold(
-        body: Padding(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          GestureDetector(
-            onTap: _choosesystem,
-            child: Container(
-              height: 200,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.grey,
-              ),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Choose Sytsem",
-                    style: TextStyle(
-                      fontSize: 30,
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+            child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Color.fromARGB(255, 238, 177, 142),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.remove_red_eye,
+                          size: 30,
+                        ),
+                        SizedBox(width: 20),
+                        Text(
+                          "Watch Sytsem",
+                          style: TextStyle(
+                            fontSize: 30,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          GestureDetector(
-            onTap: _cretaesytsem,
-            child: Container(
-              height: 200,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.grey,
-              ),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Create Sytsem",
-                    style: TextStyle(
-                      fontSize: 30,
+                    const Center(
+                      child: Text(
+                          '''\n• Watch out the pulleys on a conveyor belt.\n• Look at the pulleys about to be damaged.\n• Note the number of pulleys to be in stock.'''),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          GestureDetector(
-            onTap: _removesystem,
-            child: Container(
-              height: 200,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.grey,
-              ),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Remove Sytsem",
-                    style: TextStyle(
-                      fontSize: 30,
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ElevatedButton(
+                            onPressed: _choosesystem,
+                            child: const Text("Watch")),
+                        const SizedBox(width: 20),
+                      ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
+              const SizedBox(height: 10),
+              Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: const Color.fromARGB(255, 238, 177, 142),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.download,
+                          size: 30,
+                        ),
+                        SizedBox(width: 20),
+                        Text(
+                          "Install Sytsem",
+                          style: TextStyle(
+                            fontSize: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Center(
+                      child: Text(
+                          '''\n• Add required details of the cable conveyor.\n• Contact the technicians for sevice. \n• Install the required setup.'''),
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ElevatedButton(
+                            onPressed: _createsytsem,
+                            child: const Text("Create")),
+                        const SizedBox(width: 20),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: const Color.fromARGB(255, 238, 177, 142),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.remove_circle,
+                          size: 30,
+                        ),
+                        SizedBox(width: 20),
+                        Text(
+                          "Remove Sytsem",
+                          style: TextStyle(
+                            fontSize: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Center(
+                      child: Text(
+                          "\n• Remove conveyor to stop the service.\n• Provide valuable feedback.\n• Share data to make us better."),
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ElevatedButton(
+                            onPressed: _removesystem,
+                            child: const Text("Remove")),
+                        const SizedBox(width: 20),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                height: 120,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: const Color.fromARGB(255, 238, 177, 142),
+                ),
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.call),
+                        SizedBox(width: 20),
+                        Text(
+                          "Customer Care",
+                          style: TextStyle(
+                            fontSize: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("\n• 18005-73984\n• 18007-31974"),
+                        SizedBox(height: 10),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-    ));
+        )));
   }
 }
 

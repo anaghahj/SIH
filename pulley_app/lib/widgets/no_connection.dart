@@ -18,9 +18,7 @@ class NoConnection extends StatelessWidget {
       isConnected = result != ConnectivityResult.none;
       isConnected ? mainType() : null;
       // ignore: use_build_context_synchronously
-      Navigator.of(context).restorablePushReplacement((ctx, args) {
-        return MaterialPageRoute(builder: (ctx) => const SplashScreen());
-      });
+      Navigator.of(context).pushReplacement( MaterialPageRoute(builder: (ctx) => const SplashScreen()));
       // Navigator.of(context).restorablePushReplacement(
       //     MaterialPageRoute(builder: (ctx) => const SplashScreen())
       //         as RestorableRouteBuilder<Object?>);

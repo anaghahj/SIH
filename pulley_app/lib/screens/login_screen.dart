@@ -51,7 +51,7 @@ class _Login extends State<Login> {
         userbox.removeAll();
         userbox.put(last_user!);
         remoteStore
-            .setUsersCollection(last_user!.username + last_user!.userId.toString());
+            .setUsersCollection("${last_user!.username.trim()}${last_user!.userId.toString().trim()}");
         // ignore: use_build_context_synchronously
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (_) => const Mainscreen()));

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pulley_app/main.dart';
+import 'package:pulley_app/modals/detected_pulleys.dart';
 import 'package:pulley_app/modals/logged_in_user.dart';
 import 'package:pulley_app/objectbox.g.dart';
 
@@ -17,7 +18,7 @@ const ColorScheme kLightColorScheme = ColorScheme(
   onTertiary: Color(0xffffffff),
   tertiaryContainer: Color(0xffcbd6ff),
   onTertiaryContainer: Color(0xff111214),
-  error: Color.fromARGB(255, 196, 14, 14),
+  error: Color(0xffb00020),
   onError: Color(0xffffffff),
   errorContainer: Color(0xfffcd8df),
   onErrorContainer: Color(0xff141213),
@@ -45,8 +46,8 @@ const ColorScheme kDarkColorScheme = ColorScheme(
   onPrimaryContainer: Color(0xffe8f1ff),
   secondary: Color(0xff448aff),
   onSecondary: Color(0xff0e1114),
-  secondaryContainer:Color(0xff0b429c) ,
-  onSecondaryContainer:Color(0xffe1eaf8) ,
+  secondaryContainer: Color(0xff0b429c),
+  onSecondaryContainer: Color(0xffe1eaf8),
   tertiary: Color(0xffffb300),
   onTertiary: Color(0xfff4f9ff),
   tertiaryContainer: Color(0xffc87200),
@@ -56,7 +57,7 @@ const ColorScheme kDarkColorScheme = ColorScheme(
   errorContainer: Color.fromARGB(255, 255, 32, 36),
   onErrorContainer: Color(0xfffbe8ec),
   background: Color(0xff1d1910),
-  onBackground: Color(0xffedecec),
+  onBackground: Colors.white,
   surface: Color(0xff1d1910),
   onSurface: Color(0xffedecec),
   surfaceVariant: Color(0xff463f2c),
@@ -68,9 +69,9 @@ const ColorScheme kDarkColorScheme = ColorScheme(
   inverseSurface: Color(0xfffffbf2),
   onInverseSurface: Color(0xff141312),
   inversePrimary: Color(0xff775b0e),
-  surfaceTint:Color(0xff448aff),
+  surfaceTint: Color(0xff448aff),
 );
 
-final Box<Users> userbox=objectbox.store.box<Users>();
-
+final Box<Users> userbox = objectbox.store.box<Users>();
+final Box<DamagedPulleys> damagedPulleysBox =objectbox.store.box<DamagedPulleys>();
 Users? last_user;

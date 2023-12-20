@@ -31,10 +31,36 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "2:3163137537801387397",
+      "lastPropertyId": "3:6281759548489739921",
+      "name": "DamagedPulleys",
+      "properties": [
+        {
+          "id": "1:4373469193906160404",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3518830298498401783",
+          "name": "conveyorId",
+          "type": 9,
+          "flags": 2048,
+          "indexId": "1:5552405501332905349"
+        },
+        {
+          "id": "3:6281759548489739921",
+          "name": "damagedPulleys",
+          "type": 26
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "1:65705359650081969",
-  "lastIndexId": "0:0",
+  "lastEntityId": "2:3163137537801387397",
+  "lastIndexId": "1:5552405501332905349",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,

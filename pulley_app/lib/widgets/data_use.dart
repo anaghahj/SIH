@@ -6,27 +6,21 @@ class DataProcess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-                title: Text("Can we use yor data for the betterment of our service"),
-                
-                 actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      },
-                      child: Text("No"),
-                      ),
-                      TextButton(
-                        onPressed: (){},
-                        child: Text("Yes"),),
-
-
-                 ],
-                );     
+      title: Text("Can we use yor data for the betterment of our service"),
+      actions: [
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text("No"),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text("Yes"),
+        ),
+      ],
+    );
   }
 }
-
-
-
-
-
-                        

@@ -8,10 +8,10 @@ class create extends StatefulWidget {
   const create({super.key});
 
   @override
-  State<create> createState() => _createState();
+  State<create> createState() => _CreateState();
 }
 
-class _createState extends State<create> {
+class _CreateState extends State<create> {
   String shoe = '';
   TextEditingController name = TextEditingController();
   TextEditingController pullryno = TextEditingController();
@@ -119,7 +119,7 @@ class _createState extends State<create> {
       child: ListView(
         scrollDirection: Axis.vertical,
         children: [
-          const Text("Create System",
+          const Text("Cable Conveyor Details",
               textAlign: TextAlign.center, style: TextStyle(fontSize: 24)),
           TextField(
             controller: name,
@@ -206,7 +206,9 @@ class _createState extends State<create> {
           SizedBox(height: 8),
           TextField(
             controller: mine,
-            keyboardType: TextInputType.text,
+            keyboardType: TextInputType.streetAddress,
+            maxLines: 2,
+            minLines: 1,
             decoration: InputDecoration(
               label: Text("Mine Location"),
             ),
@@ -214,7 +216,9 @@ class _createState extends State<create> {
           SizedBox(height: 8),
           TextField(
             controller: industry,
-            keyboardType: TextInputType.text,
+            keyboardType: TextInputType.streetAddress,
+            maxLines: 2,
+            minLines: 1,
             decoration: InputDecoration(
               label: Text(
                 "Industry Location",
@@ -227,18 +231,22 @@ class _createState extends State<create> {
             textAlign: TextAlign.start,
             style: TextStyle(color: Theme.of(context).colorScheme.error),
           ),
+          SizedBox(height: 8),
           Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text("Cancel")),
-            TextButton(
-                autofocus: true,
-                onPressed: () {
-                  checker();
-                },
-                child: Text("Submit")),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Cancel"),
+            ),
+            SizedBox(width: 3),
+            ElevatedButton(
+              autofocus: true,
+              onPressed: () {
+                checker();
+              },
+              child: Text("Submit"),
+            )
           ]),
           Container(height: 200),
           Container(height: 200),

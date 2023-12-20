@@ -23,13 +23,13 @@ class FeedbackDialogue extends StatelessWidget {
         ),
       ),
       actions: [
-        TextButton(
+        ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
           child: Text("Cancel"),
         ),
-        TextButton(
+        ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
             _dataprocess();

@@ -18,7 +18,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
   late AnimationController controller;
-  int once=0;
+  int once = 0;
   @override
   void initState() {
     controller = AnimationController(
@@ -36,18 +36,19 @@ class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
       () {
         controller.stop();
         isConnected
-          ? Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) {
-                if (last_user == null) {
-                  return const Login();
-                }
-                remoteStore.setUsersCollection(
-                    last_user!.username + last_user!.userId.toString());
-                return const Mainscreen();
-              }),
-            )
-          : noconnection();} ,
+            ? Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  if (last_user == null) {
+                    return const Login();
+                  }
+                  remoteStore.setUsersCollection(
+                      last_user!.username.trim() + last_user!.userId.toString().trim());
+                  return const Mainscreen();
+                }),
+              )
+            : noconnection();
+      },
     );
 
     super.initState();
@@ -67,32 +68,34 @@ class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    controller.isCompleted? isConnected
-          ? Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) {
-                if (last_user == null) {
-                  return const Login();
-                }
-                remoteStore.setUsersCollection(
-                    last_user!.username + last_user!.userId.toString());
-                return const Mainscreen();
-              }),
-            )
-          : noconnection() :null;
+    controller.isCompleted
+        ? isConnected
+            ? Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  if (last_user == null) {
+                    return const Login();
+                  }
+                  remoteStore.setUsersCollection(
+                      last_user!.username + last_user!.userId.toString());
+                  return const Mainscreen();
+                }),
+              )
+            : noconnection()
+        : null;
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
-              'assets/images/Pulley.png',
+              'assets/images/PulleyWatch.png',
               width: 300,
             ),
-            const Text('Damage Pulley Detector'),
+            //const Text('Damage Pulley Detector'),
             const SizedBox(height: 20),
             Padding(
-              padding:const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(20),
               child: LinearProgressIndicator(
                 value: controller.value,
                 valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),

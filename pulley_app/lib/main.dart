@@ -4,6 +4,7 @@ import 'package:pulley_app/modals/constant.dart';
 import 'package:pulley_app/modals/local_store.dart';
 import 'package:pulley_app/modals/notifications.dart';
 import 'package:pulley_app/modals/remote_store.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pulley_app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -17,6 +18,8 @@ ThemeData ttheme = ThemeData.light().copyWith(
     color: Colors.white,
   ),
   colorScheme: kLightColorScheme,
+  textTheme: GoogleFonts.sanchezTextTheme(),
+
   //colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
 );
 ThemeData dtheme = ThemeData.dark().copyWith(
@@ -62,6 +65,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        color: Colors.white,
         debugShowCheckedModeBanner: false,
         title: 'Bit.exe',
         theme: ttheme,

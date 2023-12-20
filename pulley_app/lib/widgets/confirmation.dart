@@ -7,15 +7,23 @@ class ConfirmationDialogue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("are you sure you want to remove the system"),
+      title: Text("Are you sure you want to remove the system"),
       actions: [
-        TextButton(
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateColor.resolveWith(
+                (states) => Color.fromARGB(255, 235, 156, 111)),
+          ),
           onPressed: () {
             Navigator.pop(context);
           },
           child: Text("Cancel"),
         ),
-        TextButton(
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateColor.resolveWith(
+                (states) => Color.fromARGB(255, 235, 156, 111)),
+          ),
           onPressed: () {
             Navigator.pop(context);
             _dialoguebox(conveyorId);
