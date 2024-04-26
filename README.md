@@ -8,7 +8,6 @@ It is a flutter application where aindustry can keep an eye on their pulleys of 
 3. Flutter Extension in VSCode
 4. Turn on the debugging mode on your mobile(preferably android device)
 
-YOU CAN DOWNLOAD THE ABOVE APK FILE OR FOLLOW THE BELOW STEPS
 ### Steps to run the Mobile Application
 
 1. Run the following command in your desired folder
